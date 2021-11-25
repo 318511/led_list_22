@@ -1,5 +1,5 @@
 {
-    "name": "led_list_霹靂燈",
+    "name": "led_list_PLD",
     "description": "",
     "dependencies": {
         "core": "*",
