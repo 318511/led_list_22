@@ -1,103 +1,36 @@
-/**
- * 怪怪的........
- */
-let list = [
-[
-0,
-0,
-0,
-0,
-0
-],
-[
-1,
-1,
-1,
-1,
-1
-],
-[
-0,
-0,
-0,
-0,
-0
-],
-[
-0,
-0,
-0,
-0,
-0
-],
-[
-0,
-0,
-0,
-0,
-0
-]
-]
-let list2 = [
-[
-1,
-1,
-1,
-1,
-1
-],
-[
-0,
-0,
-0,
-0,
-0
-],
-[
-0,
-0,
-0,
-0,
-0
-],
-[
-0,
-0,
-0,
-0,
-0
-],
-[
-0,
-0,
-0,
-0,
-0
-]
-]
+let Y = 0
+let X = 2
+let X2 = 1
+let X3 = 0
+let DX1 = 1
+let DX2 = 1
+let DX3 = 1
 basic.forever(function () {
-    for (let Y = 0; Y <= 4; Y++) {
-        for (let X = 0; X <= 4; X++) {
-            if (list[Y][X] == 1) {
-                led.plotBrightness(Y, X, 255)
-            } else {
-                led.unplot(Y, X)
-            }
-        }
+    basic.clearScreen()
+    Y = 0
+    if (X >= 4) {
+        DX1 = -1
+    } else if (X <= 0) {
+        DX1 = 1
     }
-    list.unshift(list.pop())
-    basic.pause(100)
-})
-basic.forever(function () {
-    for (let B = 0; B <= 4; B++) {
-        for (let A = 0; A <= 4; A++) {
-            if (list2[B][A] == 1) {
-                led.plotBrightness(B, A, 100)
-            } else {
-                led.unplot(B, A)
-            }
-        }
+    if (X2 >= 4) {
+        DX2 = -1
+    } else if (X2 <= 0) {
+        DX2 = 1
     }
-    list2.unshift(list2.pop())
+    if (X3 >= 4) {
+        DX3 = -1
+    } else if (X3 <= 0) {
+        DX3 = 1
+    }
+    X += DX1
+    X2 += DX2
+    X3 += DX3
+    for (let index = 0; index < 5; index++) {
+        led.plotBrightness(X3, Y, 20)
+        led.plotBrightness(X2, Y, 60)
+        led.plot(X, Y)
+        Y += 1
+    }
     basic.pause(100)
 })
